@@ -16,7 +16,7 @@ public class Ocean {
 
     private static final int TEN;
 
-    private Ship[][] ships;
+    private final Ship[][] ships;
     private int shotsFired;
     private int hitCount;
     private int shipsSunk;
@@ -88,17 +88,19 @@ public class Ocean {
     @Override
     public String toString() {
         final String SPACES = " ";
-        StringBuffer buffer = new StringBuffer();
+        StringBuilder buffer = new StringBuilder();
         buffer.append(" ");
         for (int i = 0; i < ships[0].length; i++) {
-            buffer.append(SPACES + i);
+            buffer.append(SPACES);
+            buffer.append(i);
         }
         buffer.append("\n");
 
         for (int i = 0; i < ships.length; i++) {
             buffer.append(i);
             for (int j = 0; j < ships[0].length; j++) {
-                buffer.append(SPACES + ships[i][j]);
+                buffer.append(SPACES);
+                buffer.append(ships[i][j]);
             }
             buffer.append("\n");
         }
