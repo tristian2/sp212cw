@@ -10,6 +10,10 @@ package batteships;
  * @author KLM
  */
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Random;
 
 public class Ocean {
@@ -17,8 +21,14 @@ public class Ocean {
     private static final int UPPER;  // upper bound of the (square) board
 
     private final Ship[][] board;
+    @Getter
+    @Setter
     private int shotsFired;
+    @Getter
+    @Setter(AccessLevel.PRIVATE)
     private int hitCount;
+    @Getter
+    @Setter(AccessLevel.PRIVATE)
     private int shipsSunk;
 
     static {  // just to show how to use static initialization blocks
@@ -52,6 +62,7 @@ public class Ocean {
      * Places all 10 board randomly on the (initially empty) ocean.
      */
     public void placeAllShipsRandomly() {
+        // TODO
         // this does not have a "random" fleet - you should have one
         Ship[] fleet = new Ship[UPPER];
         fleet[0] = new BattleShip();
@@ -168,15 +179,6 @@ public class Ocean {
     }
 
     /**
-     * The number of times a shot hit a ship. If the user shoots the same part
-     * of a ship more than once, every hit is counted, even though the
-     * additional "hits" don't do the user any good.
-     */
-    public int getHitCount() {
-        return hitCount;
-    }
-
-    /**
      * A string containing the final results for hits, ships sunk and shots fired
      */
     public String printFinalScores() {
@@ -185,28 +187,5 @@ public class Ocean {
         strbld.append("You sank ").append(this.getShipsSunk()).append(" ships");
         strbld.append(" and used ").append(this.getShotsFired()).append(" shots" + ".");
         return strbld.toString();
-    }
-
-    /**
-     * The number of ships sunk
-     */
-    public int getShipsSunk() {
-        return shipsSunk;
-    }
-
-    private void setHitCount(int hitCount) {
-        this.hitCount = hitCount;
-    }
-
-    private void setShipsSunk(int shipsSunk) {
-        this.shipsSunk = shipsSunk;
-    }
-
-    public int getShotsFired() {
-        return shotsFired;
-    }
-
-    public void setShotsFired(int shotsFired) {
-        this.shotsFired = shotsFired;
     }
 }
