@@ -4,6 +4,10 @@
  */
 package batteships;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * @author MARGARET WRIGHT
  * @author KLM
@@ -11,13 +15,20 @@ package batteships;
 
 public abstract class Ship {
     // TODO add appropriate comments
+    @Getter
     private int size;
     private String type;
     private String shortForm;
 
     // TODO add appropriate comments
+    @Getter
+    @Setter(AccessLevel.PACKAGE)
     private int bowRow;
+    @Getter
+    @Setter(AccessLevel.PACKAGE)
     private int bowColumn;
+    @Getter
+    @Setter(AccessLevel.PACKAGE)
     private boolean horizontal;
 
     /**
@@ -126,49 +137,7 @@ public abstract class Ship {
      * @return a single character String to use in Ocean's print method
      */
     @Override
-    public final String toString() {
+    public String toString() {
         return shortForm;
-    }
-
-    /**
-     * @return the size of the Ship
-     */
-    protected final int getSize() {
-        return size;
-    }
-
-
-    /**
-     * the row containing the bow (front) of the ship.
-     */
-    public int getBowRow() {
-        return bowRow;
-    }
-
-    public void setBowRow(int bowRow) {
-        this.bowRow = bowRow;
-    }
-
-
-    /**
-     * the column containing the bow (front) of the ship.
-     */
-    int getBowColumn() {
-        return bowColumn;
-    }
-
-    void setBowColumn(int bowColumn) {
-        this.bowColumn = bowColumn;
-    }
-
-    /**
-     * true if the ship occupies a single row, false otherwise.
-     */
-    public boolean isHorizontal() {
-        return horizontal;
-    }
-
-    public void setHorizontal(boolean horizontal) {
-        this.horizontal = horizontal;
     }
 }
