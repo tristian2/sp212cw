@@ -5,8 +5,8 @@
 package batteships;
 
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -14,7 +14,7 @@ import lombok.Setter;
  * @author keith
  */
 
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class Position {
 
     @Getter
