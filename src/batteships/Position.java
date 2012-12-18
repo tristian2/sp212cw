@@ -20,6 +20,7 @@ public class Position {
     @Getter
     @Setter(AccessLevel.PACKAGE)
     private int x;
+
     @Getter
     @Setter(AccessLevel.PACKAGE)
     private int y;
