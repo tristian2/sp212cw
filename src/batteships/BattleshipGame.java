@@ -3,6 +3,9 @@
  * sets up the game; accepts "shots" from the user; displays the results;
  * prints final scores; and asks the user if he/she wants to play again.
  */
+
+/* uses Java 7 features */
+
 package batteships;
 
 import java.util.HashSet;
@@ -46,7 +49,7 @@ public class BattleshipGame {
                 System.out.println();
             } while (!oc.isGameOver());
             // print out final scores
-            printFinalScores(oc);
+            System.out.println(oc.printFinalScores());
 
             System.out.print("Do you want to play again (Yes or No)? ");
             reply = input.next();
@@ -65,7 +68,7 @@ public class BattleshipGame {
         // x is the row; y is the column
         int x, y;
         System.out.println();
-        System.out.println("Where do you want to fire?");
+        System.out.println("Where do you want to fire (x,y)? ");
         x = askForInput(input, "x/row = ", limit);
         y = askForInput(input, "y/col = ", limit);
         return new Position(x, y);
@@ -79,14 +82,14 @@ public class BattleshipGame {
      * @return the valid co-ordinate
      */
     private static int askForInput(Scanner input, String rowCol, int limit) {
-        int coOrd;
+        int coordinate;
         do {
             try {
                 do {
                     System.out.print(rowCol);
-                    coOrd = input.nextInt();
-                } while (coOrd < 0 || coOrd > limit - 1);
-                return coOrd;
+                    coordinate = input.nextInt();
+                } while (coordinate < 0 || coordinate > limit - 1);
+                return coordinate;
             } // checks for not an integer
             catch (Exception ex) {
                 System.err
@@ -95,16 +98,5 @@ public class BattleshipGame {
                 input.nextLine();
             } // end of catch
         } while (true);
-    }
-
-    /**
-     * Prints final results for hits, ships sunk and shots fired
-     *
-     * @param oc the current ocean
-     */
-    private static void printFinalScores(Ocean oc) {
-        System.out.println("GAME OVER!! You scored " + oc.getHitCount() + ".");
-        System.out.print("You sank " + oc.getShipsSunk() + " ships");
-        System.out.println(" and used " + oc.getShotsFired() + " shots" + ".");
     }
 }
