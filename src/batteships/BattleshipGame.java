@@ -20,7 +20,7 @@ public class BattleshipGame {
 
     public static void main(String[] args) {
 
-        Set<String> replies = new HashSet<>();
+        Set<String> replies = new HashSet<>();   // TODO - improve this
         replies.add("Yes");
         replies.add("yes");
         replies.add("y");
