@@ -1,24 +1,12 @@
-/*
- * Class Empty Sea
- * describes part of the ocean that doesn't have a ship in it.
- * Length of 1
- *
- */
 package batteships;
 
-/**
- * @author KLM
- */
-public class EmptySea extends Ship {
+public interface EmptySea extends Ship {
+    @Override
+    boolean shootAt(int row, int column);
 
-    private final static int SIZE = 1;
+    @Override
+    boolean isSunk();
 
-    /**
-     * sets the length & clears the hit array
-     */
-    public EmptySea() {
-        super(SIZE, "EmptySea", ".");
-    }
+    @Override
+    public String toString();
 }
-
-

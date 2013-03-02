@@ -8,6 +8,11 @@
 
 package batteships;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
@@ -31,7 +36,7 @@ public class BattleshipGame {
 
         do {
             // set up the game
-            Ocean oc = new Ocean();
+            Ocean oc = new OceanImpl();
             oc.placeAllShipsRandomly();
             System.out.println();
             System.out.println(oc);
@@ -81,12 +86,12 @@ public class BattleshipGame {
      *
      * @return the valid co-ordinate
      */
-    private static int askForInput(Scanner input, String rowCol, int limit) {
+    private static int askForInput(Scanner input, String promptString, int limit) {
         int coordinate;
         do {
             try {
                 do {
-                    System.out.print(rowCol);
+                    System.out.print(promptString);
                     coordinate = input.nextInt();
                 } while (coordinate < 0 || coordinate > limit - 1);
                 return coordinate;
@@ -100,3 +105,16 @@ public class BattleshipGame {
         } while (true);
     }
 }
+
+@AllArgsConstructor
+class Position {
+
+    @Getter
+    @Setter(AccessLevel.PACKAGE)
+    private int x;
+
+    @Getter
+    @Setter(AccessLevel.PACKAGE)
+    private int y;
+}
+
